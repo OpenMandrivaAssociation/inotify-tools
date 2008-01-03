@@ -2,7 +2,7 @@
 %define name	inotify-tools
 %define lname	inotifytools
 %define version	3.13
-%define rel	1
+%define rel	2
 %define major	0
 
 %define libname	%mklibname %lname %major
@@ -39,6 +39,7 @@ Summary:	Development files for inotifytools
 Group:		Development/C
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
+Provides:	%{lname}-devel = %{version}-%{release}
 
 %description -n	%{devname}
 Development files for inotifytools.

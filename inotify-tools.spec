@@ -2,7 +2,7 @@
 %define name	inotify-tools
 %define lname	inotifytools
 %define version	3.13
-%define rel	2
+%define rel	3
 %define major	0
 
 %define libname	%mklibname %lname %major

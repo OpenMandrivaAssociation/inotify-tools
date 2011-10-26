@@ -1,8 +1,8 @@
 
 %define name	inotify-tools
 %define lname	inotifytools
-%define version	3.13
-%define rel	4
+%define version	3.14
+%define rel	1
 %define major	0
 
 %define libname	%mklibname %lname %major
@@ -13,7 +13,7 @@ Name:		%{name}
 Version:	%{version}
 Release:	%mkrel %{rel}
 URL:		http://inotify-tools.sourceforge.net/
-Source:		http://downloads.sourceforge.net/inotify-tools/inotify-tools-%{version}.tar.gz
+Source:		http://github.com/downloads/rvoicilas/inotify-tools/%{name}-%{version}.tar.gz
 License:	LGPLv2.1+
 Group:		File tools
 BuildRoot:	%{_tmppath}/%{name}-root

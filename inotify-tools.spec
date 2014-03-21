@@ -7,9 +7,10 @@
 Summary:	Simple interface to inotify
 Name:		inotify-tools
 Version:	3.14
-Release:	2
+Release:	3
 URL:		http://inotify-tools.sourceforge.net/
 Source:		http://github.com/downloads/rvoicilas/inotify-tools/%{name}-%{version}.tar.gz
+Patch0:		inotify-tools-3.14-fix-blocking-inotifytools_next_event.patch
 License:	LGPLv2.1+
 Group:		File tools
 BuildRequires:	doxygen
@@ -41,6 +42,7 @@ Development files for inotifytools.
 
 %prep
 %setup -q
+%apply_patches
 
 %build
 %configure2_5x

@@ -1,0 +1,12 @@
+diff -Naur inotify-tools-3.14.orig/libinotifytools/src/inotifytools.c inotify-tools-3.14/libinotifytools/src/inotifytools.c
+--- inotify-tools-3.14.orig/libinotifytools/src/inotifytools.c	2014-03-21 10:34:57.965512178 +0400
++++ inotify-tools-3.14/libinotifytools/src/inotifytools.c	2014-03-21 10:35:09.844903356 +0400
+@@ -1167,7 +1167,7 @@
+ 	read_timeout.tv_sec = timeout;
+ 	read_timeout.tv_usec = 0;
+ 	static struct timeval * read_timeout_ptr;
+-	read_timeout_ptr = ( timeout <= 0 ? NULL : &read_timeout );
++	read_timeout_ptr = ( timeout < 0 ? NULL : &read_timeout );
+ 
+ 	FD_ZERO(&read_fds);
+ 	FD_SET(inotify_fd, &read_fds);

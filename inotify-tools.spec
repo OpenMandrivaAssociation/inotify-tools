@@ -7,7 +7,7 @@
 Summary:	Simple interface to inotify
 Name:		inotify-tools
 Version:	3.14
-Release:	3
+Release:	4
 URL:		http://inotify-tools.sourceforge.net/
 Source:		http://github.com/downloads/rvoicilas/inotify-tools/%{name}-%{version}.tar.gz
 Patch0:		inotify-tools-3.14-fix-blocking-inotifytools_next_event.patch

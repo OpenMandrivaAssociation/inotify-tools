@@ -6,12 +6,11 @@
 
 Summary:	Simple interface to inotify
 Name:		inotify-tools
-Version:	3.14
-Release:	4
-URL:		http://inotify-tools.sourceforge.net/
-Source:		http://github.com/downloads/rvoicilas/inotify-tools/%{name}-%{version}.tar.gz
-Patch0:		inotify-tools-3.14-fix-blocking-inotifytools_next_event.patch
-License:	LGPLv2.1+
+Version:	3.20.1
+Release:	1
+URL:		https://github.com/rvoicilas/inotify-tools/
+Source0:	https://github.com/rvoicilas/inotify-tools/archive/%{version}/%{name}-%{version}.tar.gz
+License:	GPLv2
 Group:		File tools
 BuildRequires:	doxygen
 
@@ -42,16 +41,19 @@ Development files for inotifytools.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 %build
-%configure2_5x
-%make
+%configure --disable-static
+
+%make_build
 
 %install
-%makeinstall_std
-mv %{buildroot}%{_docdir}/%{name} api
+%make_install
 
+find %{buildroot} -name "*.la" -delete
+
+mv %{buildroot}%{_docdir}/%{name} api
 
 %files
 %defattr(-,root,root)

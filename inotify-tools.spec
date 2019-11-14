@@ -44,6 +44,7 @@ Development files for inotifytools.
 %autopatch -p1
 
 %build
+autoreconf -vfi
 %configure --disable-static
 
 %make_build

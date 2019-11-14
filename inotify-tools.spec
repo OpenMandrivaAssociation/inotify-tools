@@ -74,7 +74,6 @@ mv %{buildroot}%{_docdir}/%{name} api
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog NEWS api
 %{_includedir}/inotifytools
-%{_libdir}/*.a
 %{_libdir}/*.so
 
 

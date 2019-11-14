@@ -44,6 +44,8 @@ Development files for inotifytools.
 %autopatch -p1
 
 %build
+export CC=gcc
+export CXX=g++
 autoreconf -vfi
 %configure --disable-static
 

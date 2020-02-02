@@ -43,6 +43,8 @@ Development files for inotifytools.
 %setup -q
 %autopatch -p1
 
+cp README.md README
+
 %build
 export CC=gcc
 export CXX=g++

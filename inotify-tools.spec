@@ -67,6 +67,8 @@ mv %{buildroot}%{_docdir}/%{name} api
 %{_bindir}/inotifywatch
 %{_mandir}/man1/inotifywait.1*
 %{_mandir}/man1/inotifywatch.1*
+%{_mandir}/man1/fsnotifywait.1.*
+%{_mandir}/man1/fsnotifywatch.1.*
 
 %files -n %{libname}
 %defattr(-,root,root)

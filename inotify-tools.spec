@@ -6,7 +6,7 @@
 
 Summary:	Simple interface to inotify
 Name:		inotify-tools
-Version:	3.20.11.0
+Version:	3.21.9.6
 Release:	1
 URL:		https://github.com/rvoicilas/inotify-tools/
 Source0:	https://github.com/rvoicilas/inotify-tools/archive/%{version}/%{name}-%{version}.tar.gz
@@ -67,6 +67,8 @@ mv %{buildroot}%{_docdir}/%{name} api
 %{_bindir}/inotifywatch
 %{_mandir}/man1/inotifywait.1*
 %{_mandir}/man1/inotifywatch.1*
+%{_mandir}/man1/fsnotifywait.1.*
+%{_mandir}/man1/fsnotifywatch.1.*
 
 %files -n %{libname}
 %defattr(-,root,root)

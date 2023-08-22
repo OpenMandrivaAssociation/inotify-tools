@@ -6,8 +6,8 @@
 
 Summary:	Simple interface to inotify
 Name:		inotify-tools
-Version:	3.22.6.0
-Release:	2
+Version:	4.23.8.0
+Release:	1
 URL:		https://github.com/rvoicilas/inotify-tools/
 Source0:	https://github.com/rvoicilas/inotify-tools/archive/%{version}/%{name}-%{version}.tar.gz
 License:	GPLv2
@@ -40,14 +40,13 @@ Provides:	%{lname}-devel = %{version}-%{release}
 Development files for inotifytools.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 cp README.md README
 
 %build
-export CC=gcc
-export CXX=g++
+#export CC=gcc
+#export CXX=g++
 autoreconf -vfi
 %configure --disable-static
 
@@ -56,8 +55,6 @@ autoreconf -vfi
 %install
 %make_install
 
-find %{buildroot} -name "*.la" -delete
-
 mv %{buildroot}%{_docdir}/%{name} api
 
 %files
@@ -65,6 +62,8 @@ mv %{buildroot}%{_docdir}/%{name} api
 %doc README
 %{_bindir}/inotifywait
 %{_bindir}/inotifywatch
+%{_bindir}/fsnotifywait
+%{_bindir}/fsnotifywatch
 %{_mandir}/man1/inotifywait.1*
 %{_mandir}/man1/inotifywatch.1*
 %{_mandir}/man1/fsnotifywait.1.*
@@ -79,31 +78,3 @@ mv %{buildroot}%{_docdir}/%{name} api
 %doc AUTHORS ChangeLog NEWS api
 %{_includedir}/inotifytools
 %{_libdir}/*.so
-
-
-
-%changelog
-* Wed Oct 26 2011 Alexander Khrukin <akhrukin@mandriva.org> 3.14-1mdv2012.0
-+ Revision: 707323
-- updated to upstream release
-
-* Fri Dec 10 2010 Oden Eriksson <oeriksson@mandriva.com> 3.13-4mdv2011.0
-+ Revision: 619633
-- the mass rebuild of 2010.0 packages
-
-* Fri Sep 04 2009 Thierry Vignaud <tv@mandriva.org> 3.13-3mdv2010.0
-+ Revision: 429512
-- rebuild
-
-* Mon Jun 09 2008 Pixel <pixel@mandriva.com> 3.13-2mdv2009.0
-+ Revision: 217205
-- do not call ldconfig in %%post/%%postun, it is now handled by filetriggers
-
-* Thu Jan 03 2008 Anssi Hannula <anssi@mandriva.org> 3.13-2mdv2008.1
-+ Revision: 141085
-- more devel provides
-
-* Thu Jan 03 2008 Anssi Hannula <anssi@mandriva.org> 3.13-1mdv2008.1
-+ Revision: 140931
-- initial Mandriva release
-

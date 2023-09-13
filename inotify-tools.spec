@@ -6,7 +6,7 @@
 
 Summary:	Simple interface to inotify
 Name:		inotify-tools
-Version:	4.23.8.0
+Version:	4.23.9.0
 Release:	1
 URL:		https://github.com/rvoicilas/inotify-tools/
 Source0:	https://github.com/rvoicilas/inotify-tools/archive/%{version}/%{name}-%{version}.tar.gz

@@ -1,12 +1,13 @@
 %define lname	inotifytools
 %define major	0
 
-%define libname	%mklibname %lname %major
+%define oldlibname	%mklibname %lname 0
+%define libname	%mklibname %lname
 %define devname	%mklibname %lname -d
 
 Summary:	Simple interface to inotify
 Name:		inotify-tools
-Version:	4.23.9.0
+Version:	4.25.9.0
 Release:	1
 URL:		https://github.com/rvoicilas/inotify-tools/
 Source0:	https://github.com/rvoicilas/inotify-tools/archive/%{version}/%{name}-%{version}.tar.gz
@@ -24,6 +25,7 @@ further details.
 %package -n	%{libname}
 Summary:	Inotify interface library
 Group:		System/Libraries
+%rename %{oldlibname}
 
 %description -n	%{libname}
 This package contains the library needed to run programs dynamically

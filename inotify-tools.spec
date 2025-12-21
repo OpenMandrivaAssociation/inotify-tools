@@ -13,6 +13,11 @@ URL:		https://github.com/rvoicilas/inotify-tools/
 Source0:	https://github.com/rvoicilas/inotify-tools/archive/%{version}/%{name}-%{version}.tar.gz
 License:	GPLv2
 Group:		File tools
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	doxygen
 
 %description

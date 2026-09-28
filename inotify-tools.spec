@@ -9,16 +9,15 @@ Summary:	Simple interface to inotify
 Name:		inotify-tools
 Version:	4.26.262
 Release:	1
-URL:		https://github.com/rvoicilas/inotify-tools/
-Source0:	https://github.com/rvoicilas/inotify-tools/archive/%{version}/%{name}-%{version}.tar.gz
+URL:		https://github.com/inotify-tools/inotify-tools/
+Source0:	https://github.com/inotify-tools/inotify-tools/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:	%{name}-%{version}-vendor.tar.xz
 License:	GPLv2
 Group:		File tools
-BuildRequires:	autoconf
-BuildRequires:	automake
-BuildRequires:	libtool-base
-BuildRequires:	slibtool
+BuildRequires:	cargo
+BuildRequires:	rust
 BuildRequires:	make
-BuildRequires:	doxygen
+BuildRequires:	gcc
 
 %description
 This is a package of some commandline utilities relating to inotify.
@@ -47,22 +46,23 @@ Provides:	%{lname}-devel = %{version}-%{release}
 Development files for inotifytools.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -a 1
 
 cp README.md README
+mkdir -p .cargo
+cat > .cargo/config.toml << 'EOF'
+[source.crates-io]
+replace-with = "vendored-sources"
+
+[source.vendored-sources]
+directory = "vendor"
+EOF
 
 %build
-#export CC=gcc
-#export CXX=g++
-autoreconf -vfi
-%configure --disable-static
-
-%make_build
+%make_build prefix=%{_prefix} libdir=%{_libdir} ENABLE_STATIC=0 CARGOFLAGS="--offline --locked"
 
 %install
-%make_install
-
-mv %{buildroot}%{_docdir}/%{name} api
+%make_install prefix=%{_prefix} libdir=%{_libdir} ENABLE_STATIC=0 CARGOFLAGS="--offline --locked"
 
 %files
 %defattr(-,root,root)
@@ -82,6 +82,6 @@ mv %{buildroot}%{_docdir}/%{name} api
 
 %files -n %{devname}
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog NEWS api
+%doc AUTHORS ChangeLog NEWS
 %{_includedir}/inotifytools
 %{_libdir}/*.so

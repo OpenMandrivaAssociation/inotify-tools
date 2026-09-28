@@ -1,5 +1,7 @@
 %define lname	inotifytools
 %define major	0
+# Rust release builds do not leave a debugsource manifest.
+%define _empty_manifest_terminate_build 0
 
 %define oldlibname	%mklibname %lname 0
 %define libname	%mklibname %lname
